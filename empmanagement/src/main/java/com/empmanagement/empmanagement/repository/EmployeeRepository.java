@@ -8,7 +8,7 @@ import com.empmanagement.empmanagement.model.Employee;
 //jpaRepository , it contains API for basic CRUD operations and also API for pagination and sorting. 
 
 @Repository
-public interface EmployeeRepository  extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository  extends JpaRepository<Employee, Integer> {
 	
 
 }
