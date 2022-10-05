@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.empmanagement.empmanagement.repository.EmployeeRepository;
+
+import com.empmanagement.empmanagement.Services.EmployeeService;
 import com.empmanagement.empmanagement.model.Employee;
 
 
@@ -16,14 +19,20 @@ import com.empmanagement.empmanagement.model.Employee;
 public class EmployeeController {
 	
 	@Autowired //
-	private  EmployeeRepository employeeRepository;
+	private  EmployeeService employeeService;
 	
 	//get all employees
 	@GetMapping("/employee")
 	public List<Employee> getAllEmployees(){
 		
-		return employeeRepository.findAll();
+		return employeeService.getAllEmployees();
 	}
+	@PostMapping("/employee/add")
+	public Employee addEmployee(@valid @RequestBody Employee employee){
+		
+		return employeeService.addEmployees(employee);
+	}
+
 	
 	
 	
