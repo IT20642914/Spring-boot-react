@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Employee {
     @Id //set primarykey
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     
  @Column(name="frist_name")
  private String fristName;
@@ -41,7 +41,7 @@ public class Employee {
  
  
  //Overload Contractor
- public Employee(long id, String fristName, String lastName, String email, int age, int mobileNumber, Double salary,
+ public Employee(Integer id, String fristName, String lastName, String email, int age, int mobileNumber, Double salary,
 		String jobTitle, Date hireDate) {
 	super();
 	this.id = id;
@@ -56,10 +56,10 @@ public class Employee {
 }
  
  //geter and setters
-public long getId() {
+public Integer getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(Integer id) {
 	this.id = id;
 }
 public String getFristName() {
