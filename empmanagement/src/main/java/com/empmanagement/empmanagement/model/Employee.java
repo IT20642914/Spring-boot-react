@@ -27,7 +27,7 @@ public class Employee {
  @Column(name="mobile_number")
  private int mobileNumber;
  @Column(name="salary")
- private int salary;
+ private Double salary;
  @Column(name="job_title")
  private String jobTitle;
  @Column(name="hire_date")
@@ -41,7 +41,7 @@ public class Employee {
  
  
  //Overload Contractor
- public Employee(long id, String fristName, String lastName, String email, int age, int mobileNumber, int salary,
+ public Employee(long id, String fristName, String lastName, String email, int age, int mobileNumber, Double salary,
 		String jobTitle, Date hireDate) {
 	super();
 	this.id = id;
@@ -92,10 +92,10 @@ public int getMobileNumber() {
 public void setMobileNumber(int mobileNumber) {
 	this.mobileNumber = mobileNumber;
 }
-public int getSalary() {
+public double getSalary() {
 	return salary;
 }
-public void setSalary(int salary) {
+public void setSalary(double salary) {
 	this.salary = salary;
 }
 public String getJobTitle() {
