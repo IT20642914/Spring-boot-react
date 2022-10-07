@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios';
+import { useNavigate  } from "react-router-dom";
 
 function AddEmployee() {
-
+  const navigate = useNavigate();
  //geting values from form
 const Submit=(e)=>{
   let fristName=e.target[0].value;
@@ -27,6 +28,8 @@ const postEmployee=(data)=>{
   axios.post("http://localhost:8080/api/v1/employee/add",data).then((res)=>{
 
     console.log(res);
+   alert("successfuly added")
+   navigate("/")
   }).catch(err=> alert(err));
 
 
@@ -104,6 +107,8 @@ const postEmployee=(data)=>{
 
 
     <div className="mb-2">
+
+    
     <button type="submit" className="btn btn-primary">Submit</button>
     </div></div>
 </form>
