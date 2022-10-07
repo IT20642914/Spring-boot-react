@@ -41,6 +41,7 @@ public class EmployeeService {
             d.setEmail(employee.getEmail());
             d.setAge(employee.getAge());
             d.setJobTitle(employee.getJobTitle());
+            d.setMobileNumber(employee.getMobileNumber());
             d.setHireDate(employee.getHireDate());
             d.setSalary(employee.getSalary());
             return employeeRepository.save(d);
