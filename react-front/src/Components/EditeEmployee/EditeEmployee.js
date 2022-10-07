@@ -12,7 +12,7 @@ function EditeEmployee(props) {
 
 const [StateEmployee, setStateEmployee] = useState({})
 
-
+const[error,setError]=useState(false);
 
 
 
@@ -125,7 +125,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                       })
                     }}
                 
-                  className="form-control" id="Name" placeholder="Frist name"></input>
+                  className="form-control" id="Name" placeholder="Frist name" required></input>    
                 </div>
 
                 <div className="mb-3">
@@ -145,7 +145,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                     
                     })
                   }}
-                   className="form-control" id="Name" placeholder="Last name"></input>
+                   className="form-control" id="Name" placeholder="Last name"required></input>
                 </div>
 
                 <div className="mb-3">
@@ -167,12 +167,13 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         })
                       }}
-                   className="form-control" id="Name" placeholder="Email"></input>
+                   className="form-control" id="Name" placeholder="Email"required></input>
+               
 
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="Nameinput" className="form-label"> Age</label>
+                  <label htmlFor="Nameinput" className="form-label"required> Age</label>
                   <input type="Number"value={StateEmployee.age}
                       onChange={e =>{
                         let value = e.target.value
@@ -188,7 +189,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                           hireDate:StateEmployee.hireDate
                         
                         })
-                      }} className="form-control" id="Name" placeholder="Age"></input>
+                      }} className="form-control" id="Name" placeholder="Age"required></input>
                 </div>
 
                 <div className="mb-3">
@@ -209,7 +210,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         
                         })
-                      }}className="form-control" id="phone" name="phone" placeholder="123-456-789"  pattern="[0-9]{3}[0-9]{3}[0-9]{3}"></input>
+                      }}className="form-control" id="phone" name="phone" placeholder="123-456-789"  pattern="[0-9]{3}[0-9]{3}[0-9]{3}"required></input>
 
                 </div>
                 <div className="mb-3">
@@ -251,7 +252,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         
                         })
-                      }}className="form-control" id="Name"></input>
+                      }}className="form-control" id="Name"required></input>
                 </div>
 
 
@@ -272,7 +273,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                           salary:StateEmployee.salary,
                     
                         })
-                      }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" />
+                      }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required/>
 
                 </div>
 

@@ -94,22 +94,22 @@ const postEmployee=(data)=>{
 
             <div className="mb-3">
                         <label htmlFor="Nameinput" className="form-label"> Age</label>
-                        <input type="Number" className="form-control" id="Name" placeholder="Age"></input>
+                        <input type="Number" className="form-control" id="Name" placeholder="Age"  pattern="[0-9]{3}"  required></input>
             </div>
 
             <div className="mb-3">
                         <label htmlFor="Nameinput" className="form-label"> Mobile number</label>
-                        <input type="tel" className="form-control" id="phone" name="phone" placeholder="123-456-789" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"></input>
+                        <input type="tel" className="form-control" id="phone" name="phone" placeholder="123-456-789" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"required></input>
                      
             </div>
             <div className="mb-3">
                         <label htmlFor="Nameinput" className="form-label"> Job title</label>
-                        <input type="text" className="form-control" id="Name" placeholder="Job title"></input>
+                        <input type="text" className="form-control" id="Name" placeholder="Job title"required></input>
             </div>
 
             <div className="mb-3">
                         <label htmlFor="Nameinput" className="form-label"> Salary</label>
-                        <input type="text" className="form-control" id="Name"></input>
+                        <input type="text" className="form-control" id="Name"required></input>
             </div>
 
 
