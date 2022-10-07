@@ -2,7 +2,7 @@
 import './App.css';
 import ListEmployeeComponent from './Components/ListEmployeeComponents';
 import AddEmployee from './Components/AddEmployee/AddEmployee';
-
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './layout/header/Header';
 import { BrowserRouter as Router,Routes, Route,  } from 'react-router-dom';
 import EditeEmployee from './Components/EditeEmployee/EditeEmployee';

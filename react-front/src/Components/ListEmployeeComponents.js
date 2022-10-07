@@ -26,10 +26,7 @@ function ListEmployeeComponents() {
     }, []);
 
 
-const notify=()=>{
-    toast('basic notification')
 
-}
 
 
 
@@ -38,10 +35,20 @@ const notify=()=>{
     const deleteEmployeebyid = (id) => {
 
         axios.delete(`http://localhost:8080/api/v1/employee/${id}`).then(res => {
-            alert("succesfully delete " + (res));
+            //alert("succesfully delete " + (res));
+
+            toast.success("Successfully  Deleted ! ", {
+                position: toast.POSITION.TOP_RIGHT
+              });
             getAllEmployees();
 
-        })
+           
+
+        }).catch(err =>toast.error("Erro ! "+err, {
+            position: toast.POSITION.TOP_RIGHT
+          }));
+    
+      
 
 
     }
@@ -87,7 +94,7 @@ const notify=()=>{
 
     return (
         <div>
-<button onClick={notify}>Notify</button>
+
             <br></br>
 
             <div className="container">
