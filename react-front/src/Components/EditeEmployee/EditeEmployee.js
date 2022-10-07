@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation,useNavigate  } from "react-router-dom";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function EditeEmployee(props) {
@@ -10,7 +12,7 @@ function EditeEmployee(props) {
 
 const [StateEmployee, setStateEmployee] = useState({})
 
-
+const[error,setError]=useState(false);
 
 
 
@@ -57,10 +59,16 @@ const [StateEmployee, setStateEmployee] = useState({})
     axios.put(`http://localhost:8080/api/v1/employee/add/${StateEmployee.id}`,StateEmployee)
 
       .then(d => {
+        toast.success("Successfully  Updated ! ", {
+          position: toast.POSITION.TOP_RIGHT
+        });
      console.log(d);
+     navigate("/")
      
       })
-      .catch(err => alert(err));
+      .catch(err =>toast.error("Erro ! "+err, {
+        position: toast.POSITION.TOP_RIGHT
+      }));
 
   }
 
@@ -87,11 +95,11 @@ const [StateEmployee, setStateEmployee] = useState({})
       <br></br>
       <div className='container'>
         <div className="card shadow mb-4">
-          <div className="card-header py-3"><h5 className="m-2 card-title">Add Employee</h5>
+          <div className="card-header py-3"><h5 className="m-2 card-title">Update Employee</h5>
             <form onSubmit={(e) => {
               e.preventDefault();
               PutEmployee(e);
-             navigate("/")
+            
             }}>
               <div className="card-body">
                 <div className="mb-3">
@@ -117,7 +125,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                       })
                     }}
                 
-                  className="form-control" id="Name" placeholder="Frist name"></input>
+                  className="form-control" id="Name" placeholder="Frist name" required></input>    
                 </div>
 
                 <div className="mb-3">
@@ -137,7 +145,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                     
                     })
                   }}
-                   className="form-control" id="Name" placeholder="Last name"></input>
+                   className="form-control" id="Name" placeholder="Last name"required></input>
                 </div>
 
                 <div className="mb-3">
@@ -159,12 +167,13 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         })
                       }}
-                   className="form-control" id="Name" placeholder="Email"></input>
+                   className="form-control" id="Name" placeholder="Email"required></input>
+               
 
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="Nameinput" className="form-label"> Age</label>
+                  <label htmlFor="Nameinput" className="form-label"required> Age</label>
                   <input type="Number"value={StateEmployee.age}
                       onChange={e =>{
                         let value = e.target.value
@@ -180,7 +189,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                           hireDate:StateEmployee.hireDate
                         
                         })
-                      }} className="form-control" id="Name" placeholder="Age"></input>
+                      }} className="form-control" id="Name" placeholder="Age"required></input>
                 </div>
 
                 <div className="mb-3">
@@ -201,7 +210,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         
                         })
-                      }}className="form-control" id="phone" name="phone" placeholder="123-456-789"  pattern="[0-9]{3}[0-9]{3}[0-9]{3}"></input>
+                      }}className="form-control" id="phone" name="phone" placeholder="123-456-789"  pattern="[0-9]{3}[0-9]{3}[0-9]{3}"required></input>
 
                 </div>
                 <div className="mb-3">
@@ -243,7 +252,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                         
                         
                         })
-                      }}className="form-control" id="Name"></input>
+                      }}className="form-control" id="Name"required></input>
                 </div>
 
 
@@ -264,7 +273,7 @@ const [StateEmployee, setStateEmployee] = useState({})
                           salary:StateEmployee.salary,
                     
                         })
-                      }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" />
+                      }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required/>
 
                 </div>
 
@@ -278,7 +287,7 @@ const [StateEmployee, setStateEmployee] = useState({})
 
 
                 <div className="mb-2">
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="Save" className="btn btn-primary">Save changes</button>
                 </div></div>
             </form>
 
