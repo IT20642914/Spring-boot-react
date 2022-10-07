@@ -1,14 +1,24 @@
-import React, { useState, useEffect  } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import ListEmployeeRow from './ListEmployeeRow';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link, useNavigate } from 'react-router-dom';
+
+
+
+
 
 function ListEmployeeComponents() {
 
 
+  
+    const [EmployeeList, setEmployeeList] = useState([])
 
-    const [EmployeeList, setEmployeeList] = useState([],)
-    const [filter,selFilter]=useState('')
+
+    const [filter, selFilter] = useState("");
+
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getAllEmployees();
@@ -16,21 +26,60 @@ function ListEmployeeComponents() {
     }, []);
 
 
+const notify=()=>{
+    toast('basic notification')
+
+}
+
+
+
+
+    //delet employee by id
+    const deleteEmployeebyid = (id) => {
+
+        axios.delete(`http://localhost:8080/api/v1/employee/${id}`).then(res => {
+            alert("succesfully delete " + (res));
+            getAllEmployees();
+
+        })
+
+
+    }
+
+
+
+
+
+
     const getAllEmployees = (() => {
         axios
             .get("http://localhost:8080/api/v1/employee")
-            .then((data) => {
+            .then((res) => {
 
-                setEmployeeList(data.data);
-                
-               
-                console.log(data.data);
-               
+                setEmployeeList(res.data);
+
+                console.log(res.data)
+
+
+
+
+
             })
             .catch((err) => { alert(err) })
     });
 
 
+
+    //navigate with id
+    const editeemplyee = (id) => {
+
+        navigate("/edite", {
+            state: {
+                userID: id,
+
+            }
+        })
+    }
 
 
 
@@ -38,7 +87,7 @@ function ListEmployeeComponents() {
 
     return (
         <div>
-
+<button onClick={notify}>Notify</button>
             <br></br>
 
             <div className="container">
@@ -49,7 +98,7 @@ function ListEmployeeComponents() {
 
                         <form className="form-inline my-1 my-lg-0">
                             <div className="serchbar">
-                                <input className="form-control mr-sm-1" type="search" placeholder="Search by name" value={filter} onChange={(e)=> selFilter(e.target.value)} />
+                                <input className="form-control mr-sm-1" type="search" placeholder="Search by name" value={filter} onChange={(e) => selFilter(e.target.value)} />
                             </div>
                         </form>
 
@@ -75,8 +124,48 @@ function ListEmployeeComponents() {
 
                         </thead>
                         <tbody>
-                            {/* using props */}
-                            <ListEmployeeRow EmployeeList={EmployeeList} />
+                        
+
+                            {EmployeeList.filter(emp => { return emp.fristName.toLowerCase().includes(filter.toLowerCase()) || emp.lastName.toLowerCase().includes(filter.toLowerCase()) || emp.jobTitle.toLowerCase().includes(filter.toLowerCase()) })
+
+                                .map((EmployeeList) => {
+
+
+                                    return (
+
+                                        <tr key={EmployeeList.id}>
+                                            <th>{EmployeeList.id}</th>
+                                            <th>{EmployeeList.fristName}</th>
+                                            <th>{EmployeeList.lastName}</th>
+                                            <th>{EmployeeList.email}</th>
+                                            <th>{EmployeeList.age}</th>
+                                            <th>{EmployeeList.mobileNumber}</th>
+                                            <th>{EmployeeList.jobTitle}</th>
+                                            <th>{EmployeeList.salary}</th>
+                                            <th>{EmployeeList.hireDate}</th>
+                                            <th> <button onClick={() => { editeemplyee(EmployeeList.id) }} className='btn  btn btn-primary btn-sm'>Edite</button></th>
+
+                                            <th><button onClick={() => deleteEmployeebyid(EmployeeList.id)}
+                                                className='btn  btn btn-danger btn-sm'  >Delete</button></th>
+
+                                        </tr>
+
+                                    )
+
+
+
+
+                                })
+
+
+
+
+
+
+
+
+                            }
+
                         </tbody>
 
                     </table></div> </div>

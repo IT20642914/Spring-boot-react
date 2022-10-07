@@ -6,7 +6,11 @@ import AddEmployee from './Components/AddEmployee/AddEmployee';
 import Header from './layout/header/Header';
 import { BrowserRouter as Router,Routes, Route,  } from 'react-router-dom';
 import EditeEmployee from './Components/EditeEmployee/EditeEmployee';
+import { ToastContainer, toast } from 'react-toastify';
+
 function App() {
+  
+
   return (
     <div className="App">    
 
@@ -14,7 +18,8 @@ function App() {
     
   <Router>
     <Header/>
-
+    
+    <ToastContainer />
        <Routes>    
             < Route exact path='/' element={<ListEmployeeComponent />}> </Route>
             < Route exact path='/add' element={<AddEmployee />}> </Route>
